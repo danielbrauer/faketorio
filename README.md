@@ -58,7 +58,7 @@ The Factorio specific files (`control.lua`, `data.lua`, `settings.lua`, ...) all
 
 #### .faketorio config file
 Faketorio requires a config file to run. You can specify the location with the `-c` option. If no config path
-is provided faketorio will search for a file named `.faketorio` in the current folder.
+is provided faketorio will search for a file named `.faketorio` in the current user's home folder.
 This file has to have three values configured.
 
 ```properties
