@@ -8,7 +8,7 @@ describe("Test the helper methods #helper", function()
     end)
 
     it("should read config if file is present.", function()
-        faketorio.load_config()
+        faketorio.load_config(".faketorio")
 
         assert.are.equals("D:\\Spiele\\Factorio\\bin\\x64\\factorio.exe", faketorio.factorio_run_path)
         assert.are.equals("factorio", faketorio.factorio_mod_path)

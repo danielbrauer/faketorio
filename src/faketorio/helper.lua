@@ -77,10 +77,23 @@ function faketorio.get_mod_info()
     return json:decode(faketorio.read_file("info.json"))
 end
 
+faketorio.default_config_file = ".faketorio"
+
+function faketorio.get_default_config_path()
+    local pathSeparator = package.config:sub(1,1)
+    local home
+    if pathSeparator == '/' then
+        home = os.getenv ( "HOME" ) -- non-Windows
+    else
+        home = os.getenv ( "USERPROFILE" ) -- Windows
+    end
+    return home..pathSeparator..faketorio.default_config_file
+end
+
 function faketorio.load_config(path)
 
     if (path == nil or path == "") then
-            path = ".faketorio"
+        path = faketorio.get_default_config_path()
     end
 
     faketorio.print_message("Loading config from [%s].", path)
