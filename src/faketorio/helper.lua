@@ -87,7 +87,11 @@ function faketorio.get_default_config_path()
     else
         home = os.getenv ( "USERPROFILE" ) -- Windows
     end
-    return home..pathSeparator..faketorio.default_config_file
+    if home then
+        return home..pathSeparator..faketorio.default_config_file
+    else
+        error("Couldn't find user's home directory")
+    end
 end
 
 function faketorio.load_config(path)
