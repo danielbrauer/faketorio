@@ -14,13 +14,11 @@ describe("Test the copy functionality #copy", function()
         file:write("asdasd")
         file:close()
 
-        faketorio.lfs.mkdir("factorio")
-
     end)
 
     lazy_teardown(function()
         faketorio.delete_directory("locale")
-        faketorio.delete_directory("factorio")
+        faketorio.delete_directory("target")
         faketorio.clean()
     end)
 
@@ -51,24 +49,24 @@ describe("Test the copy functionality #copy", function()
         assert.are.equals("target/Faketorio-test-mod_0.1.0", faketorio.output_folder)
 
         for _, file in pairs(busted.collect_file_names("src")) do
-            file = string.gsub(file, "src", "factorio/Faketorio-test-mod_0.1.0")
+            file = string.gsub(file, "src", "target/Faketorio-test-mod_0.1.0")
             faketorio.print_message("Verifying file ["..file.."].")
             assert.is_Truthy(faketorio.lfs.attributes(file))
         end
 
         for _, file in pairs(busted.collect_file_names("locale")) do
-            file = "factorio/Faketorio-test-mod_0.1.0/"..file
+            file = "target/Faketorio-test-mod_0.1.0/"..file
             faketorio.print_message("Verifying file ["..file.."].")
             assert.is_Truthy(faketorio.lfs.attributes(file))
         end
 
-        local file = "factorio/Faketorio-test-mod_0.1.0/faketorio/features/dummy_feature.lua"
+        local file = "target/Faketorio-test-mod_0.1.0/faketorio/features/dummy_feature.lua"
         assert.is_Truthy(faketorio.lfs.attributes(file))
 
-        file = "factorio/Faketorio-test-mod_0.1.0/faketorio/features/clean_spec.lua"
+        file = "target/Faketorio-test-mod_0.1.0/faketorio/features/clean_spec.lua"
         assert.is_Falsy(faketorio.lfs.attributes(file))
 
-        assert.is_Truthy(faketorio.lfs.attributes("factorio/Faketorio-test-mod_0.1.0/info.json"))
+        assert.is_Truthy(faketorio.lfs.attributes("target/Faketorio-test-mod_0.1.0/info.json"))
     end)
 
 end)
