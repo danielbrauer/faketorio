@@ -10,13 +10,13 @@ read_globals = {
                     revert = {},
                     calls = {}
                 }
-            }
+            },
             getenv = {
                 fields = {
                     revert = {},
                     calls = {}
                 }
-            }
+            },
         }
     }
 }
