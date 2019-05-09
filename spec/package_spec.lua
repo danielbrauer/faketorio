@@ -36,7 +36,7 @@ describe("Test the package functionality #package", function()
             return
         end
 
-        faketorio.execute({package = true})
+        faketorio.execute({package = true, config = ".faketorio"})
 
         assert.are.equals("target/Faketorio-test-mod_0.1.0", faketorio.output_folder)
 
@@ -60,7 +60,7 @@ describe("Test the package functionality #package", function()
         end
 
         stub(os, "execute")
-        faketorio.execute({package = true})
+        faketorio.execute({package = true, config = ".faketorio"})
 
         assert.are.equals("target/Faketorio-test-mod_0.1.0", faketorio.output_folder)
 

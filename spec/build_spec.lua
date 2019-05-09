@@ -49,7 +49,7 @@ describe("Test the build functionality #build", function()
     end
 
     it("should collect all lua scripts with their subfolders from src and locale.", function()
-        faketorio.execute({build = true})
+        faketorio.execute({build = true, config = ".faketorio"})
 
         assert.are.equals("target/Faketorio-test-mod_0.1.0", faketorio.output_folder)
 
@@ -70,7 +70,7 @@ describe("Test the build functionality #build", function()
 
     it("should work without an existing locale folder.", function()
         faketorio.delete_directory("locale")
-        faketorio.execute({build = true})
+        faketorio.execute({build = true, config = ".faketorio"})
 
         assert.are.equals("target/Faketorio-test-mod_0.1.0", faketorio.output_folder)
 
@@ -89,7 +89,7 @@ describe("Test the build functionality #build", function()
         file:write("asdasd")
         file:close()
 
-        faketorio.execute({build = true})
+        faketorio.execute({build = true, config = ".faketorio"})
 
         assert.are.equals("target/Faketorio-test-mod_0.1.0", faketorio.output_folder)
 
@@ -105,7 +105,7 @@ describe("Test the build functionality #build", function()
         file:write("asdasd")
         file:close()
 
-        faketorio.execute({build = true})
+        faketorio.execute({build = true, config = ".faketorio"})
 
         assert.are.equals("target/Faketorio-test-mod_0.1.0", faketorio.output_folder)
 

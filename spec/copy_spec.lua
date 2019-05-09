@@ -46,7 +46,7 @@ describe("Test the copy functionality #copy", function()
     end
 
     it("should collect all lua scripts with their subfolders from src, spec and locale.", function()
-        faketorio.execute({copy = true})
+        faketorio.execute({copy = true, config = ".faketorio"})
 
         assert.are.equals("target/Faketorio-test-mod_0.1.0", faketorio.output_folder)
 

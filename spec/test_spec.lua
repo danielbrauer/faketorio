@@ -33,7 +33,7 @@ describe("Test the test command #test", function()
     end
 
     it("should copy all test infra files to the target folder", function()
-        faketorio.execute({test = true, path = "asd", verbose = true})
+        faketorio.execute({test = true, path = "asd", verbose = true, config = ".faketorio"})
 
         for _, file in pairs(busted.collect_file_names("src/ingame")) do
             file = string.gsub(file, "src/ingame", "target/Faketorio-test-mod_0.1.0/faketorio")
@@ -49,7 +49,7 @@ describe("Test the test command #test", function()
         file:write("asdasd")
         file:close()
 
-        faketorio.execute({test = true, path = "asd"})
+        faketorio.execute({test = true, path = "asd", config = ".faketorio"})
 
         file = "target/Faketorio-test-mod_0.1.0/faketorio/features/busted_feature.lua"
         assert.is_Truthy(faketorio.lfs.attributes(file))
@@ -65,7 +65,7 @@ describe("Test the test command #test", function()
         file:write("test content")
         file:close()
 
-        faketorio.execute({test = true})
+        faketorio.execute({test = true, config = ".faketorio"})
 
         local control = faketorio.read_file("target/Faketorio-test-mod_0.1.0/control.lua")
 

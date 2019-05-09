@@ -12,7 +12,7 @@ describe("Test the clean command #clean", function()
         file:write("asdasd")
         file:close()
 
-        faketorio.execute({clean = true})
+        faketorio.execute({clean = true, config = ".faketorio"})
 
         local attr = faketorio.lfs.attributes("target")
         assert.is_Falsy(attr)
@@ -22,7 +22,7 @@ describe("Test the clean command #clean", function()
         local attr = faketorio.lfs.attributes("target")
         assert.is_Falsy(attr)
 
-        faketorio.execute({clean = true})
+        faketorio.execute({clean = true, config = ".faketorio"})
 
         attr = faketorio.lfs.attributes("target")
         assert.is_Falsy(attr)
